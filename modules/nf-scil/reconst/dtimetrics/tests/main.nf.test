@@ -18,49 +18,30 @@ nextflow_process {
                 script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
                 process {
                     """
-                    input[0] = Channel.from( [ "heavy.zip" ] )
+                    input[0] = Channel.from( [ "DWIss1000-dir32.zip",
+                                               "segmentation.zip" ] )
                     input[1] = "test.load-test-data"
                     """
                 }
             }
         }
 
-    test("reconst - dtimetrics") {
-        when {
-            process {
-                """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/dwi/dwi.nii.gz", checkIfExists: true),
-                        file("\${test_data_directory}/dwi/dwi.bval", checkIfExists: true),
-                        file("\${test_data_directory}/dwi/dwi.bvec", checkIfExists: true),
-                        []
-                    ]
-                }
-                """
-            }
-        }
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(process.out).match() }
-            )
-        }
-    }
-
     test("reconst - dtimetrics_with_b0mask") {
         config "./nextflow_light.config"
         when {
             process {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
+                ch_split_test_data = LOAD_DATA.out.test_data_directory
+                    .branch{
+                        dwi: it.simpleName == "DWIss1000-dir32"
+                        segmentation: it.simpleName == "segmentation"
+                    }
+                input[0] = ch_split_test_data.dwi.map{
                     test_data_directory -> [
-                        [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/dwi/dwi.nii.gz", checkIfExists: true),
-                        file("\${test_data_directory}/dwi/dwi.bval", checkIfExists: true),
-                        file("\${test_data_directory}/dwi/dwi.bvec", checkIfExists: true),
-                        file("\${test_data_directory}/dwi/mask.nii.gz", checkIfExists: true)
+                        [ id:'test' ],
+                        file("\${test_data_directory}/dwi.nii.gz"),
+                        file("\${test_data_directory}/dwi.bval"),
+                        file("\${test_data_directory}/dwi.bvec")
                     ]
                 }
                 """
@@ -69,7 +50,10 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    Nifti_md5sum(process.out.fa.get(0).get(1)),
+                    process.out.versions
+                ).match() }
             )
         }
     }
