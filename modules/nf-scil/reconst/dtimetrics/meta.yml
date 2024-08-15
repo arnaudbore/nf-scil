@@ -139,10 +139,15 @@ output:
 
   - pulsation_std_dwi:
       type: file
-      description: Standard deviation map across all diffusion-weighted images
-        and across b=0 images if more than one is available.Shows
-        pulsation and misalignment artifacts.
+      description: Standard deviation map across all diffusion-weighted images.
+        Shows pulsation and misalignment artifacts.
       pattern: "*__pulsation_std_dwi.{nii,nii.gz}"
+
+  - pulsation_std_b0:
+      type: file
+      description: Standard deviation map across b=0 images if more than one
+        is available. Shows pulsation and misalignment artifacts.
+      pattern: "*__pulsation_std_b0.{nii,nii.gz}"
 
   - residual:
       type: file
