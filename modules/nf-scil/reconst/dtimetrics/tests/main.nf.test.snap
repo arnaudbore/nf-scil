@@ -1,7 +1,7 @@
 {
     "reconst - dtimetrics_with_b0mask": {
         "content": [
-            "test__fa.nii.gz:md5,4c7f0e77b580e70fb0073a982624eb88",
+            "test__fa.nii.gz:md5,57c27586c58b0c17642da8ee4dce4905",
             [
                 "versions.yml:md5,609a8b62c7dc862692683ec5860ba677"
             ]
@@ -10,31 +10,31 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2024-08-15T15:05:13.563787"
+        "timestamp": "2024-08-15T17:21:38.843739"
     },
     "reconst - dtimetrics": {
         "content": [
-            "test__ad.nii.gz:md5,8c49744742f8c3f6c141ec560438ad5c",
-            "test__evecs.nii.gz:md5,46303904c5a018a7a61c7b9e90376e54",
-            "test__evecs_v1.nii.gz:md5,0f32edaaeb16692b4f8d1c3cce10c6ea",
-            "test__evecs_v2.nii.gz:md5,f5974af39e7c9d589c22cbf4361a2540",
-            "test__evecs_v3.nii.gz:md5,2e222b618888811008c242f909b6136f",
-            "test__evals.nii.gz:md5,c4d233935db1a0374586ca4c14d28d7e",
-            "test__evals_e1.nii.gz:md5,9586338fe140e4c51f536317769fbd5b",
-            "test__evals_e2.nii.gz:md5,0e64f3b4edb06f00913e9a1520b07810",
-            "test__evals_e3.nii.gz:md5,80fc97f110a6f981001229f7a8a59a20",
-            "test__fa.nii.gz:md5,4c7f0e77b580e70fb0073a982624eb88",
-            "test__ga.nii.gz:md5,a08c5909c335a20a59d668e0158cbfb4",
-            "test__rgb.nii.gz:md5,307426c7487879a52c2f7c3c09be300d",
-            "test__md.nii.gz:md5,81169cc1474c14b0ae6d6b69ff570486",
-            "test__mode.nii.gz:md5,7b2b898817c649fca07ee9f5fb946140",
-            "test__norm.nii.gz:md5,4cb8cdb7663dae6c05b3ed80a2de139c",
-            "test__rd.nii.gz:md5,7184328d2bf3d820df7f4c3d6670cef3",
-            "test__tensor.nii.gz:md5,20922c7e98ff3c246b58c659f230b906",
-            "test__nonphysical.nii.gz:md5,c7f577f704dabe21307efc5a732b0bf8",
-            "test__pulsation_std_dwi.nii.gz:md5,7535e954f29463ee54a88db6f97c83fd",
-            "test__pulsation_std_b0.nii.gz:md5,d4da887a5fbdf64ea4de2a9621d789c6",
-            "test__residual.nii.gz:md5,154e47f742299759e7357e05920fa0e1",
+            "test__ad.nii.gz:md5,a58d00f56b244d2dadf36dc3ca107baf",
+            "test__evecs.nii.gz:md5,1f0b3f16c099961c77cabad89ef654a4",
+            "test__evecs_v1.nii.gz:md5,8452e9682d9bed70e03fc5aac1e797fb",
+            "test__evecs_v2.nii.gz:md5,baaef2a18b47235d5242eac3864dc394",
+            "test__evecs_v3.nii.gz:md5,06859c4584219101fa4c0a7e7304609e",
+            "test__evals.nii.gz:md5,835364e68bc7a1ff1ffc4165f2b8d467",
+            "test__evals_e1.nii.gz:md5,e3d70ed7541b10ddd189efa33ef95d0a",
+            "test__evals_e2.nii.gz:md5,7d4373e087766f1f4237f7bde71daced",
+            "test__evals_e3.nii.gz:md5,a12b01745cbc0f81432ac013c1c0cdf0",
+            "test__fa.nii.gz:md5,57c27586c58b0c17642da8ee4dce4905",
+            "test__ga.nii.gz:md5,e8ac48f3def794c43674c49e5407474c",
+            "test__rgb.nii.gz:md5,fb4cffe445155a214699e3a1a0f0d419",
+            "test__md.nii.gz:md5,5e47369c67dcdeb641f43bd68b8ffb99",
+            "test__mode.nii.gz:md5,65c3882e2ac59a22fb52e1d346eef8c2",
+            "test__norm.nii.gz:md5,d98d909cb5736383918caad97d9309d4",
+            "test__rd.nii.gz:md5,14de511a4e5c457b449838a80b3461f1",
+            "test__tensor.nii.gz:md5,68589fbe9506f1e6386d04f42bbad338",
+            "test__nonphysical.nii.gz:md5,0441a15a0c226a11c1c9ea45fe414bfd",
+            "test__pulsation_std_dwi.nii.gz:md5,d06f08daa5efa658ee795f67af96f365",
+            "test__pulsation_std_b0.nii.gz:md5,72ab24ac69562462c1434aa9d82f0b99",
+            "test__residual.nii.gz:md5,e651d2b66aab6140389d21e5bb845561",
             [
                 [
                     {
@@ -91,6 +91,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2024-08-15T15:04:53.356876"
+        "timestamp": "2024-08-15T17:21:03.02886"
     }
 }
