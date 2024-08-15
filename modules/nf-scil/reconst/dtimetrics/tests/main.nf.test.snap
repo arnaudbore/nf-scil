@@ -1,660 +1,96 @@
 {
     "reconst - dtimetrics_with_b0mask": {
         "content": [
-            {
-                "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "10": [
-                    
-                ],
-                "11": [
-                    
-                ],
-                "12": [
-                    
-                ],
-                "13": [
-                    
-                ],
-                "14": [
-                    
-                ],
-                "15": [
-                    
-                ],
-                "16": [
-                    
-                ],
-                "17": [
-                    
-                ],
-                "18": [
-                    
-                ],
-                "19": [
-                    
-                ],
-                "2": [
-                    
-                ],
-                "20": [
-                    
-                ],
-                "21": [
-                    
-                ],
-                "22": [
-                    
-                ],
-                "23": [
-                    
-                ],
-                "24": [
-                    
-                ],
-                "25": [
-                    
-                ],
-                "26": [
-                    "versions.yml:md5,609a8b62c7dc862692683ec5860ba677"
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "6": [
-                    
-                ],
-                "7": [
-                    
-                ],
-                "8": [
-                    
-                ],
-                "9": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__fa.nii.gz:md5,2e52b551402bdbdec9a301b875fc4722"
-                    ]
-                ],
-                "ad": [
-                    
-                ],
-                "evals": [
-                    
-                ],
-                "evals_e1": [
-                    
-                ],
-                "evals_e2": [
-                    
-                ],
-                "evals_e3": [
-                    
-                ],
-                "evecs": [
-                    
-                ],
-                "evecs_v1": [
-                    
-                ],
-                "evecs_v2": [
-                    
-                ],
-                "evecs_v3": [
-                    
-                ],
-                "fa": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__fa.nii.gz:md5,2e52b551402bdbdec9a301b875fc4722"
-                    ]
-                ],
-                "ga": [
-                    
-                ],
-                "md": [
-                    
-                ],
-                "mode": [
-                    
-                ],
-                "nonphysical": [
-                    
-                ],
-                "norm": [
-                    
-                ],
-                "pulsation_std_dwi": [
-                    
-                ],
-                "rd": [
-                    
-                ],
-                "residual": [
-                    
-                ],
-                "residual_iqr_residuals": [
-                    
-                ],
-                "residual_mean_residuals": [
-                    
-                ],
-                "residual_q1_residuals": [
-                    
-                ],
-                "residual_q3_residuals": [
-                    
-                ],
-                "residual_residuals_stats": [
-                    
-                ],
-                "residual_std_residuals": [
-                    
-                ],
-                "rgb": [
-                    
-                ],
-                "tensor": [
-                    
-                ],
-                "versions": [
-                    "versions.yml:md5,609a8b62c7dc862692683ec5860ba677"
-                ]
-            }
+            "test__fa.nii.gz:md5,4c7f0e77b580e70fb0073a982624eb88",
+            [
+                "versions.yml:md5,609a8b62c7dc862692683ec5860ba677"
+            ]
         ],
         "meta": {
             "nf-test": "0.9.0-rc1",
-            "nextflow": "24.04.2"
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2024-06-20T23:06:15.147391"
+        "timestamp": "2024-08-15T15:05:13.563787"
     },
     "reconst - dtimetrics": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__ad.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs.nii.gz:md5,15ccf781a3329ea61e12ded2e58db397"
-                    ]
-                ],
-                "10": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__ga.nii.gz:md5,b65ebb5bb38a3e47e83ea0a569e9e4b1"
-                    ]
-                ],
-                "11": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rgb.nii.gz:md5,601b67930e79dbf23dfaeb5aafe6f3e7"
-                    ]
-                ],
-                "12": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__md.nii.gz:md5,d9a6ca6d7ad205b8ec0a90f0db4c53d9"
-                    ]
-                ],
-                "13": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mode.nii.gz:md5,4b964b1b2eaa376e138d956822e6673f"
-                    ]
-                ],
-                "14": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__norm.nii.gz:md5,5540436e8e61effe47dde7a1c89cfb9a"
-                    ]
-                ],
-                "15": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rd.nii.gz:md5,d33a7089844a53184c0548cdf8899efa"
-                    ]
-                ],
-                "16": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__tensor.nii.gz:md5,5d74f987559fa980fd899d26c4b6f101"
-                    ]
-                ],
-                "17": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__nonphysical.nii.gz:md5,7da6de5ad6e7c37518f9f3962f066f89"
-                    ]
-                ],
-                "18": [
-                    
-                ],
-                "19": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual.nii.gz:md5,72090f28a6d0aaf0654def397f59d2ba"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v1.nii.gz:md5,2ee5bccdf2a591d2b6d6f2b7067d05e4"
-                    ]
-                ],
-                "20": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_iqr_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "21": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_mean_residuals.npy:md5,2247858eaf51c6e973649418f8721477"
-                    ]
-                ],
-                "22": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q1_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "23": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q3_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "24": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_residuals_stats.png:md5,18ce14e9e554c8f5fb1cf0c87af36f9f"
-                    ]
-                ],
-                "25": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_std_residuals.npy:md5,5e526c12b8a13b611bd1b2e00d4e1448"
-                    ]
-                ],
-                "26": [
-                    "versions.yml:md5,609a8b62c7dc862692683ec5860ba677"
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v2.nii.gz:md5,00cefe7aea0d8bb29bb00e29934d0085"
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v3.nii.gz:md5,d8e9dce7cc788088110d40bb9dcee95b"
-                    ]
-                ],
-                "5": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals.nii.gz:md5,62a56f74298f59038de8f3ac4e1d8f7e"
-                    ]
-                ],
-                "6": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e1.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
-                    ]
-                ],
-                "7": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e2.nii.gz:md5,eb0cba1c29152ad36a7768e977326829"
-                    ]
-                ],
-                "8": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e3.nii.gz:md5,78744b78fa617c7c1a16ff824318359c"
-                    ]
-                ],
-                "9": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__fa.nii.gz:md5,d8a924bfab876fffca2173384c651ff3"
-                    ]
-                ],
-                "ad": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__ad.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
-                    ]
-                ],
-                "evals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals.nii.gz:md5,62a56f74298f59038de8f3ac4e1d8f7e"
-                    ]
-                ],
-                "evals_e1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e1.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
-                    ]
-                ],
-                "evals_e2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e2.nii.gz:md5,eb0cba1c29152ad36a7768e977326829"
-                    ]
-                ],
-                "evals_e3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e3.nii.gz:md5,78744b78fa617c7c1a16ff824318359c"
-                    ]
-                ],
-                "evecs": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs.nii.gz:md5,15ccf781a3329ea61e12ded2e58db397"
-                    ]
-                ],
-                "evecs_v1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v1.nii.gz:md5,2ee5bccdf2a591d2b6d6f2b7067d05e4"
-                    ]
-                ],
-                "evecs_v2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v2.nii.gz:md5,00cefe7aea0d8bb29bb00e29934d0085"
-                    ]
-                ],
-                "evecs_v3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v3.nii.gz:md5,d8e9dce7cc788088110d40bb9dcee95b"
-                    ]
-                ],
-                "fa": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__fa.nii.gz:md5,d8a924bfab876fffca2173384c651ff3"
-                    ]
-                ],
-                "ga": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__ga.nii.gz:md5,b65ebb5bb38a3e47e83ea0a569e9e4b1"
-                    ]
-                ],
-                "md": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__md.nii.gz:md5,d9a6ca6d7ad205b8ec0a90f0db4c53d9"
-                    ]
-                ],
-                "mode": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mode.nii.gz:md5,4b964b1b2eaa376e138d956822e6673f"
-                    ]
-                ],
-                "nonphysical": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__nonphysical.nii.gz:md5,7da6de5ad6e7c37518f9f3962f066f89"
-                    ]
-                ],
-                "norm": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__norm.nii.gz:md5,5540436e8e61effe47dde7a1c89cfb9a"
-                    ]
-                ],
-                "pulsation_std_dwi": [
-                    
-                ],
-                "rd": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rd.nii.gz:md5,d33a7089844a53184c0548cdf8899efa"
-                    ]
-                ],
-                "residual": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual.nii.gz:md5,72090f28a6d0aaf0654def397f59d2ba"
-                    ]
-                ],
-                "residual_iqr_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_iqr_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "residual_mean_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_mean_residuals.npy:md5,2247858eaf51c6e973649418f8721477"
-                    ]
-                ],
-                "residual_q1_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q1_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "residual_q3_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q3_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "residual_residuals_stats": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_residuals_stats.png:md5,18ce14e9e554c8f5fb1cf0c87af36f9f"
-                    ]
-                ],
-                "residual_std_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_std_residuals.npy:md5,5e526c12b8a13b611bd1b2e00d4e1448"
-                    ]
-                ],
-                "rgb": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rgb.nii.gz:md5,601b67930e79dbf23dfaeb5aafe6f3e7"
-                    ]
-                ],
-                "tensor": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__tensor.nii.gz:md5,5d74f987559fa980fd899d26c4b6f101"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,609a8b62c7dc862692683ec5860ba677"
+            "test__ad.nii.gz:md5,8c49744742f8c3f6c141ec560438ad5c",
+            "test__evecs.nii.gz:md5,46303904c5a018a7a61c7b9e90376e54",
+            "test__evecs_v1.nii.gz:md5,0f32edaaeb16692b4f8d1c3cce10c6ea",
+            "test__evecs_v2.nii.gz:md5,f5974af39e7c9d589c22cbf4361a2540",
+            "test__evecs_v3.nii.gz:md5,2e222b618888811008c242f909b6136f",
+            "test__evals.nii.gz:md5,c4d233935db1a0374586ca4c14d28d7e",
+            "test__evals_e1.nii.gz:md5,9586338fe140e4c51f536317769fbd5b",
+            "test__evals_e2.nii.gz:md5,0e64f3b4edb06f00913e9a1520b07810",
+            "test__evals_e3.nii.gz:md5,80fc97f110a6f981001229f7a8a59a20",
+            "test__fa.nii.gz:md5,4c7f0e77b580e70fb0073a982624eb88",
+            "test__ga.nii.gz:md5,a08c5909c335a20a59d668e0158cbfb4",
+            "test__rgb.nii.gz:md5,307426c7487879a52c2f7c3c09be300d",
+            "test__md.nii.gz:md5,81169cc1474c14b0ae6d6b69ff570486",
+            "test__mode.nii.gz:md5,7b2b898817c649fca07ee9f5fb946140",
+            "test__norm.nii.gz:md5,4cb8cdb7663dae6c05b3ed80a2de139c",
+            "test__rd.nii.gz:md5,7184328d2bf3d820df7f4c3d6670cef3",
+            "test__tensor.nii.gz:md5,20922c7e98ff3c246b58c659f230b906",
+            "test__nonphysical.nii.gz:md5,c7f577f704dabe21307efc5a732b0bf8",
+            "test__pulsation_std_dwi.nii.gz:md5,7535e954f29463ee54a88db6f97c83fd",
+            "test__pulsation_std_b0.nii.gz:md5,d4da887a5fbdf64ea4de2a9621d789c6",
+            "test__residual.nii.gz:md5,154e47f742299759e7357e05920fa0e1",
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test__residual_iqr_residuals.npy:md5,58dfe3925469668723c16dc37f5c787c"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test__residual_mean_residuals.npy:md5,8a3c812ebbfc15b5242918d287659bf0"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test__residual_q1_residuals.npy:md5,2790db91a0e7727358dd2aaccb887983"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test__residual_q3_residuals.npy:md5,15c3d97be583a3e39bad3731aaea082d"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test__residual_residuals_stats.png:md5,bb819c98e3c98a8cd74cb1e79ae044d5"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test__residual_std_residuals.npy:md5,15fac15e7543f321a7d3a451e45563c5"
+                ]
+            ],
+            [
+                "versions.yml:md5,609a8b62c7dc862692683ec5860ba677"
+            ]
         ],
         "meta": {
             "nf-test": "0.9.0-rc1",
-            "nextflow": "24.04.2"
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2024-06-20T23:05:55.560305"
+        "timestamp": "2024-08-15T15:04:53.356876"
     }
 }
