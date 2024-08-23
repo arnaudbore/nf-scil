@@ -17,4 +17,10 @@ RUN python3 -m pip install pipx && \
     pipx install poetry
 
 RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\
-    apt-get install -y nodejs
+    apt-get install -y nodejs && \
+    groupadd --gid 501 yeoman && \
+    useradd --uid 501 --gid yeoman --shell /bin/bash --create-home yeoman && \
+    echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+RUN mkdir /generated && chown yeoman:yeoman /generated
+WORKDIR /generated

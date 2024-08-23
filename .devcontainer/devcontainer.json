@@ -10,6 +10,9 @@
     "onCreateCommand": "bash .devcontainer/onCreateCommand.sh",
     "updateContentCommand": "bash .devcontainer/updateContentCommand.sh",
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "containerEnv": {
+        "WORKSPACE": "${containerWorkspaceFolder}"
+    },
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/git-lfs:1": {},
