@@ -9,12 +9,15 @@ on:
         type: string
       profile:
         description: "Which profile to use to run the module's tests"
-        required: true
         default: 'docker'
         type: choice
         options:
           - docker
           - singularity
+      runner:
+          description: "Runner label to use for the test run"
+          default: 'ubuntu-latest'
+          type: string
   workflow_call:
     inputs:
       profile:
@@ -22,11 +25,15 @@ on:
           Which profile to use to run the module's tests, either :
             - docker
             - singularity
-        required: true
+        default: 'docker'
         type: string
       paths:
         description: "Paths nf-test should look into for tests"
         required: true
+        type: string
+      runner:
+        description: "Runner label to use for the test run"
+        default: 'ubuntu-latest'
         type: string
 
 env:
@@ -36,7 +43,7 @@ env:
 run-name: Run nf-test on ${{ inputs.paths }}
 jobs:
   nf-test:
-    runs-on: scilus-nf-scil-runners
+    runs-on: ${{ inputs.runner }}
     name: nf-test-${{ inputs.paths }}
     if: inputs.paths != ''
     env:

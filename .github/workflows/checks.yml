@@ -121,13 +121,18 @@ jobs:
       fail-fast: false
       matrix:
         path: [ "${{ fromJson(needs.nf-test-changes.outputs.paths) }}" ]
-        profile: ["docker"]
+        include:
+          - profile: docker
+          - runner: scilus-nf-scil-runners
+          - runner: scilus-nf-scil-bigmem-runners
+            path: modules/nf-scil/registration/easyreg
         exclude:
           - path: subworkflows/nf-scil/load_test_data
     uses: ./.github/workflows/nf-test_module.yml
     with:
       profile: ${{ matrix.profile }}
       paths: ${{ matrix.path }}
+      runner: ${{ matrix.runner }}
     secrets: inherit
 
   confirm-pass:
