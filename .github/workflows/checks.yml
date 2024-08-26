@@ -124,10 +124,14 @@ jobs:
         include:
           - profile: docker
           - runner: scilus-nf-scil-runners
+          - path: modules/nf-scil/registration/easyreg
+            profile: dummy-to-remove
           - runner: scilus-nf-scil-bigmem-runners
             path: modules/nf-scil/registration/easyreg
         exclude:
           - path: subworkflows/nf-scil/load_test_data
+          - path: modules/nf-scil/registration/easyreg
+            profile: dummy-to-remove
     uses: ./.github/workflows/nf-test_module.yml
     with:
       profile: ${{ matrix.profile }}
