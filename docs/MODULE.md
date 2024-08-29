@@ -238,18 +238,44 @@ Replace the `<archive>` with the name of the one you need and you'll be able to 
 If your process takes an optional input (such as a mask), you can simply add an empty list:
 
 ```groovy
-                """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ], // meta map      -> your meta
-                        file("\${test_data_directory}/image.nii.gz"), //  -> your image file.
-                        []                                            //  -> your optional input.
-                    ]
-                }
-                """
+  """
+  input[0] = LOAD_DATA.out.test_data_directory.map{
+      test_data_directory -> [
+          [ id:'test', single_end:false ], // meta map      -> your meta
+          file("\${test_data_directory}/image.nii.gz"), //  -> your image file.
+          []                                            //  -> your optional input.
+      ]
+  }
+  """
 ```
 
-Once you have set up your input correctly, ensure the assertions within the `assertAll` are consistent with the outputs you are expecting. The default values (as shown above) will assert the consistency of the md5sum. For more details regarding the possible assertions, see the [nf-test doc](https://www.nf-test.com/docs/assertions/assertions/).
+Once you have set up your input correctly, you need to define, in the `then` section, the assertions to carry on the files and variables the module's outputs. The `snapshot` function usually takes care of correctly resuming the data it receives into `md5sums` and most times giving it `process.out` is enough.
+
+```groovy
+then {
+    assertAll(
+        { assert process.success },
+        { assert snapshot(process.out).match() }
+    )
+}
+```
+
+However, it is not the case right now for `Nifti` images, which require the use of a dedicated method to extract a reproducible `md5sum`, aka `Nifti_md5sum`. To assert a `Nifti` output, in this example case the first one, do the following :
+
+```groovy
+then {
+    assertAll(
+        { assert process.success },
+        { assert snapshot(
+          Nifti_md5sum(process.out.get(0).get(1)),
+          ...
+          ).match()
+        }
+    )
+}
+```
+
+Here we consider all outputs are `tuples`, with the first field being the `meta` dictionary associated to it. For more details regarding the possible assertions, see the [nf-test doc](https://www.nf-test.com/docs/assertions/assertions/).
 
 To add more test cases, you can add multiple `test` sections as defined above (all within the same `nextflow process {}`). This can be done to test with different inputs, or different parameters provided through a `nextflow.config` file. If you want to define specific parameters for a single test, assign the `nextflow.config` file using the `config` parameter within the test definition (as shown above). If you want to assign identical parameters for all tests, you can bind the `nextflow.config` file at the beginning of the `main.nf.test`:
 
