@@ -15,10 +15,10 @@
     "reconst - dtimetrics": {
         "content": [
             "test__ad.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,a4f053c9d65bed0062f7778818c555b4",
-            "test__evecs.nii.gz:md5:header,b94612a536198ceea9f24a92cc74f4a4,data,a6fc177fd129d008f784b43b89c3c692",
-            "test__evecs_v1.nii.gz:md5:header,6a667c1adb8ac1636526963bb9091ea6,data,51a5a2093eb3f913f98823b241d69764",
-            "test__evecs_v2.nii.gz:md5:header,6a667c1adb8ac1636526963bb9091ea6,data,1a961e99f2fc998568275f2eef63fa23",
-            "test__evecs_v3.nii.gz:md5:header,6a667c1adb8ac1636526963bb9091ea6,data,d4eeb8acc12e99728be8773860375533",
+            "test__evecs.nii.gz",
+            "test__evecs_v1.nii.gz",
+            "test__evecs_v2.nii.gz",
+            "test__evecs_v3.nii.gz",
             "test__evals.nii.gz:md5:header,6a667c1adb8ac1636526963bb9091ea6,data,194ed3036c73a0120615e95bc343607e",
             "test__evals_e1.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,a4f053c9d65bed0062f7778818c555b4",
             "test__evals_e2.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,ffa92eecb19b6ffbfb27d1696e521d44",
@@ -27,35 +27,14 @@
             "test__ga.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,a76a594121a0ef669616621eb15aec57",
             "test__rgb.nii.gz:md5:header,952bd2b13b64d7f1b128af7d85191a18,data,a2063164b39833b2a1596683b63494bd",
             "test__md.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,4e1b42f49af7ed531d0d85fcae5effa8",
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test__mode.nii.gz:md5,b389f60b61c97b6e3ad127fb70b6d06a"
-                ]
-            ],
+            "test__mode.nii.gz",
             "test__norm.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,e4f9a5a1ea4021f01879c2ba269b33dd",
             "test__rd.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,48d8030185bea2f3b11a0a648bbb6abd",
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test__tensor.nii.gz:md5,036b7b91b8a8458e09dce53c4ed9ab77"
-                ]
-            ],
+            "test__tensor.nii.gz",
             "test__nonphysical.nii.gz:md5:header,0968ff06e75bcbd0d7b2dcbcc5bf6ff7,data,4e865d417aae67c66e2a7c681aacfcae",
             "test__pulsation_std_dwi.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,62fe8dc99a6e3733c28b2c05281b6781",
             "test__pulsation_std_b0.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,e5bed827c14a49c4ff1aa97844ade64f",
-            [
-                [
-                    {
-                        "id": "test"
-                    },
-                    "test__residual.nii.gz:md5,7b9d6af672871bb90e544d99f83bd9c3"
-                ]
-            ],
+            "test__residual.nii.gz:md5:header,c9e720b9a8acfe45a617e6486ebb8de0,data,a01c5897af1087af9a9153e20b491e91",
             [
                 [
                     {
@@ -112,6 +91,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2024-08-30T19:59:39.216535"
+        "timestamp": "2024-08-30T20:12:52.390001"
     }
 }
