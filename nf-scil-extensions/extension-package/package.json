@@ -7,7 +7,7 @@
         "url": "https://github.com/scilus/nf-scil.git"
     },
     "icon": "icon.avif",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "AlexVCaron",
     "engines": {
         "vscode": "^1.84.0"
@@ -46,6 +46,14 @@
         "nf-core.nf-core-extensionpack",
         "twxs.cmake",
         "yahyabatulu.vscode-markdown-alert",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "onnovalkering.vscode-singularity",
+        "nextflow.nextflow",
+        "KorbinianEckstein.niivue",
+        "mutantdino.resourcemonitor",
+        "christian-kohler.npm-intellisense",
+        "dbaeumer.vscode-eslint",
+        "connor4312.esbuild-problem-matchers",
+        "ms-vscode.extension-test-runner"
     ]
 }
