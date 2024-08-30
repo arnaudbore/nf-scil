@@ -45,7 +45,7 @@ jobs:
   nf-test:
     runs-on: ${{ inputs.runner }}
     name: nf-test-${{ inputs.paths }}
-    if: inputs.paths != '' && inputs.profile != 'do-not-run'
+    if: inputs.paths != '' && inputs.profile != ''
     env:
       NXF_ANSI_LOG: false
       NFTEST_VER: "0.9.0-rc1"
