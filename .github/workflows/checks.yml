@@ -116,7 +116,7 @@ jobs:
   nf-test:
     name: test
     needs: [nf-test-changes]
-    if: github.repository == 'scilus/nf-scil' && ${{ ( needs.nf-test-changes.outputs.paths != '[]' ) }}
+    if: ${{ ( github.repository == 'scilus/nf-scil' ) && ( needs.nf-test-changes.outputs.paths != '[]' ) }}
     strategy:
       fail-fast: false
       matrix:
