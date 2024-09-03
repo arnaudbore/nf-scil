@@ -44,7 +44,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                        "test__IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
                     ]
                 ],
                 "13": [
@@ -53,7 +53,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                        "test__IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
                     ]
                 ],
                 "14": [
@@ -62,7 +62,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__IFGWM.trk_lesion_map.nii.gz:md5,390c8abfcfa2533367099c9fac26ee21"
+                        "test__IFGWM_lesion_map.nii.gz:md5,390c8abfcfa2533367099c9fac26ee21"
                     ]
                 ],
                 "15": [
@@ -74,7 +74,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                        "test_endpoints_metric_stats.json:md5,3a0fef22a945c74ae4792a5de818acff"
                     ]
                 ],
                 "3": [
@@ -140,7 +140,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                        "test__IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
                     ]
                 ],
                 "endpoints_metric_stats": [
@@ -149,7 +149,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                        "test_endpoints_metric_stats.json:md5,3a0fef22a945c74ae4792a5de818acff"
                     ]
                 ],
                 "endpoints_raw": [
@@ -167,7 +167,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                        "test__IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
                     ]
                 ],
                 "length": [
@@ -185,7 +185,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__IFGWM.trk_lesion_map.nii.gz:md5,390c8abfcfa2533367099c9fac26ee21"
+                        "test__IFGWM_lesion_map.nii.gz:md5,390c8abfcfa2533367099c9fac26ee21"
                     ]
                 ],
                 "lesion_stats": [
@@ -270,9 +270,9 @@
         ],
         "meta": {
             "nf-test": "0.9.0-rc1",
-            "nextflow": "24.04.3"
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2024-08-01T13:47:29.33467"
+        "timestamp": "2024-09-03T15:23:58.700174"
     },
     "bundle - stats": {
         "content": [
@@ -313,7 +313,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                        "test__IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
                     ]
                 ],
                 "13": [
@@ -322,7 +322,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                        "test__IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
                     ]
                 ],
                 "14": [
@@ -337,7 +337,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                        "test_endpoints_metric_stats.json:md5,3a0fef22a945c74ae4792a5de818acff"
                     ]
                 ],
                 "3": [
@@ -385,7 +385,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                        "test__IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
                     ]
                 ],
                 "endpoints_metric_stats": [
@@ -394,7 +394,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                        "test_endpoints_metric_stats.json:md5,3a0fef22a945c74ae4792a5de818acff"
                     ]
                 ],
                 "endpoints_raw": [
@@ -412,7 +412,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                        "test__IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
                     ]
                 ],
                 "length": [
@@ -485,9 +485,9 @@
         ],
         "meta": {
             "nf-test": "0.9.0-rc1",
-            "nextflow": "24.04.3"
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2024-08-01T13:42:36.266056"
+        "timestamp": "2024-09-03T15:23:19.265407"
     },
     "bundle - stats - light": {
         "content": [

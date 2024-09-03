@@ -62,13 +62,13 @@ process BUNDLE_STATS {
     if [[ "$endpoints" ]];
     then
         scil_bundle_compute_endpoints_map.py \${bundles[index]} \
-            \${bname}_endpoints_map_head.nii.gz \
-            \${bname}_endpoints_map_tail.nii.gz >\
+            ${prefix}__\${bname}_endpoints_map_head.nii.gz \
+            ${prefix}__\${bname}_endpoints_map_tail.nii.gz >\
             ${prefix}__\${bname}_endpoints_raw.json;
 
-        scil_volume_stats_in_ROI.py \${bname}_endpoints_map_head.nii.gz $normalize_weights\
+        scil_volume_stats_in_ROI.py ${prefix}__\${bname}_endpoints_map_head.nii.gz $normalize_weights\
             --metrics \${b_metrics} > \${bname}_head.json
-        scil_volume_stats_in_ROI.py \${bname}_endpoints_map_tail.nii.gz $normalize_weights\
+        scil_volume_stats_in_ROI.py ${prefix}__\${bname}_endpoints_map_tail.nii.gz $normalize_weights\
             --metrics \${b_metrics} > \${bname}_tail.json;
 
     fi
@@ -89,7 +89,7 @@ process BUNDLE_STATS {
                 --bundle \${bundles[index]} --out_lesion_stats ${prefix}__lesion_stats.json \
                 --out_streamlines_stats \${bname}_streamline_count_lesions_stat.json \
                 --min_lesion_vol $min_lesion_vol -f
-            fi
+        fi
 
     elif [[ "$streamline_count" ]];
     then
@@ -105,9 +105,9 @@ process BUNDLE_STATS {
         then
             scil_analyse_lesions_load.py $lesions \${bname}_volume_per_label_lesions_stat.json \
                 --bundle_labels_map \${label_map[index]} \
-                --out_lesion_atlas "${prefix}__\${bundles[index]}_lesion_map.nii.gz" \
+                --out_lesion_atlas "${prefix}__\${bname}_lesion_map.nii.gz" \
                 --min_lesion_vol $min_lesion_vol
-            fi
+        fi
     fi
 
     if [[ "$mean_std_per_point" ]];
@@ -172,8 +172,8 @@ process BUNDLE_STATS {
 
         if [[ "$lesions_stats" ]];
         then
-        scil_json_merge_entries.py *_volume_per_label_lesions_stat.json ${prefix}_volume_per_label_lesions.json \
-            --no_list --add_parent_key ${prefix}
+            scil_json_merge_entries.py *_volume_per_label_lesions_stat.json ${prefix}_volume_per_label_lesions.json \
+                --no_list --add_parent_key ${prefix}
         fi
     fi
 
