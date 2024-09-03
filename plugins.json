@@ -5,7 +5,7 @@
         "url": "https://github.com/scilus/nft-nifti",
         "github": "scilus/nft-nifti",
         "description": "Provides support for NIFTI files.",
-        "author": "Arnaud Boré",
+        "author": "Arnaud Boré and Alex V Caron",
         "keywords": [],
         "releases": [
             {

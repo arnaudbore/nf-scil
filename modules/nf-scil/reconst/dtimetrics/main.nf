@@ -4,8 +4,8 @@ process RECONST_DTIMETRICS {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
-        'scilus/scilus:2.0.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
         tuple val(meta), path(dwi), path(bval), path(bvec), path(b0mask)
@@ -30,6 +30,7 @@ process RECONST_DTIMETRICS {
         tuple val(meta), path("*__tensor.nii.gz")                  , emit: tensor, optional: true
         tuple val(meta), path("*__nonphysical.nii.gz")             , emit: nonphysical, optional: true
         tuple val(meta), path("*__pulsation_std_dwi.nii.gz")       , emit: pulsation_std_dwi, optional: true
+        tuple val(meta), path("*__pulsation_std_b0.nii.gz")        , emit: pulsation_std_b0, optional: true
         tuple val(meta), path("*__residual.nii.gz")                , emit: residual, optional: true
         tuple val(meta), path("*__residual_iqr_residuals.npy")     , emit: residual_iqr_residuals, optional: true
         tuple val(meta), path("*__residual_mean_residuals.npy")    , emit: residual_mean_residuals, optional: true
@@ -64,7 +65,7 @@ process RECONST_DTIMETRICS {
     if ( task.ext.rd ) args += " --rd ${prefix}__rd.nii.gz"
     if ( task.ext.tensor ) args += " --tensor ${prefix}__tensor.nii.gz"
     if ( task.ext.nonphysical ) args += " --non-physical ${prefix}__nonphysical.nii.gz"
-    if ( task.ext.pulsation ) args += " --pulsation ${prefix}__pulsation_std_dwi.nii.gz"
+    if ( task.ext.pulsation ) args += " --pulsation ${prefix}__pulsation.nii.gz"
     if ( task.ext.residual ) args += " --residual ${prefix}__residual.nii.gz"
 
 
@@ -82,7 +83,7 @@ process RECONST_DTIMETRICS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.0
+        scilpy: \$(pip list --disable-pip-version-check --no-python-version-warning | grep scilpy | tr -s ' ' | cut -d' ' -f2)
     END_VERSIONS
     """
 
@@ -113,6 +114,7 @@ process RECONST_DTIMETRICS {
     touch ${prefix}__tensor.nii.gz
     touch ${prefix}__nonphysical.nii.gz
     touch ${prefix}__pulsation_std_dwi.nii.gz
+    touch ${prefix}__pulsation_std_b0.nii.gz
     touch ${prefix}__residual.nii.gz
     touch ${prefix}__residual_iqr_residuals.npy
     touch ${prefix}__residual_mean_residuals.npy
@@ -123,7 +125,7 @@ process RECONST_DTIMETRICS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.0
+        scilpy: \$(pip list --disable-pip-version-check --no-python-version-warning | grep scilpy | tr -s ' ' | cut -d' ' -f2)
     END_VERSIONS
     """
 }
