@@ -15,9 +15,19 @@ on:
           - docker
           - singularity
       runner:
-          description: "Runner label to use for the test run"
-          default: 'ubuntu-latest'
-          type: string
+        description: "Runner label to use for the test run"
+        default: 'ubuntu-latest'
+        type: string
+      nextflow_version:
+        description: "Nextflow version to use"
+        required: false
+        type: string
+        default: "24.04.4"
+      nf_test_version:
+        description: "nf-test version to use"
+        required: false
+        type: string
+        default: "0.9.0-rc1"
   workflow_call:
     inputs:
       profile:
@@ -35,6 +45,16 @@ on:
         description: "Runner label to use for the test run"
         default: 'ubuntu-latest'
         type: string
+      nextflow_version:
+        description: "Nextflow version to use"
+        required: false
+        type: string
+        default: "24.04.4"
+      nf_test_version:
+        description: "nf-test version to use"
+        required: false
+        type: string
+        default: "0.9.0-rc1"
 
 env:
   NXF_SINGULARITY_CACHEDIR: /home/runner/.singularity_cache/.singularity
@@ -48,63 +68,64 @@ jobs:
     if: inputs.paths != '' && inputs.profile != ''
     env:
       NXF_ANSI_LOG: false
-      NFTEST_VER: "0.9.0-rc1"
-      NFSCIL_TEST_DATA_HOME: /home/runner/_work
-
+      NXF_DISABLE_CHECK_LATEST: true
+      NFTEST_VERSION: "${{ inputs.nf_test_version }}"
+      # nf-test directories need to be placed on an ephemeral disk accessible to docker.
+      # In our case, it's only the _work workspace for security reasons
+      NXF_WORKDIR: /home/runner/_work
     steps:
       - uses: actions/checkout@v4
-
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: 'pip'
       - uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: "17"
-
-      - name: Setup Nextflow
-        uses: nf-core/setup-nextflow@v2
-
+          cache: 'gradle'
+      - uses: nf-core/setup-nextflow@v2
+        with:
+          version: ${{ inputs.nextflow_version }}
       - name: Setup nf-test
         uses: AlexVCaron/setup-nf-test@2c5a31b90b34d97abf155b57ee0f79c7f5aa118a
         # Used to make the action executable on our runners. Related to how the home
         # and work directories are set up from ephemeral disks. See nf-core/setup-nf-test/issues/6
         with:
-          version: ${{ env.NFTEST_VER }}
+          version: ${{ inputs.nf_test_version }}
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip pdiff cryptography
 
       - name: Fix nf-test launching jvm with too much memory
         run: |
           sed -i 's/-Xmx10g//' $(which nf-test)
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - uses: actions/cache@v4
-        id: cache-pip-pdiff
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-pdiff
-          restore-keys: |
-            ${{ runner.os }}-pip-pdiff
-
-      - uses: actions/github-script@v7
+      - name: Compute test run UID
+        uses: actions/github-script@v7
         id: test-run-identifier
         with:
           script: |
             identifier='${{ inputs.paths }}'.toLowerCase().replaceAll(/[/. ]+/g, '-').trim('-');
-            core.setOutput('tag', identifier);
+            core.setOutput('uid', identifier);
 
-      - uses: actions/cache@v4
+      - name: Cache test archives under test UID
+        uses: actions/cache@v4
         with:
-          path: ${{ env.NFSCIL_TEST_DATA_HOME }}/nf-scil-test-archives
-          key: nf-scil-test-data-cache-${{ steps.test-run-identifier.outputs.tag }}
-
-      - name: Install Python dependencies
-        run: python -m pip install --upgrade pip pdiff cryptography
+          path: ${{ env.NXF_WORKDIR }}/nf-scil-test-archives
+          key: |
+            nf-scil-test-data-cache-${{ steps.test-run-identifier.outputs.uid }}
+            nf-scil-test-data-cache-
 
       - name: Run nf-test
         env:
           NFT_DIFF: "pdiff"
           NFT_DIFF_ARGS: "--line-numbers --width 120 --expand-tabs=2"
+          TMPDIR: ${{ env.NXF_WORKDIR }}/tmpdir
+          NFT_WORKDIR: ${{ env.NXF_WORKDIR }}/.nf-test
+          NXF_CACHE_DIR: ${{ env.NXF_WORKDIR }}/.nextflow
+          NXF_TEMP: ${{ env.NXF_WORKDIR }}/tmpdir
+          NFSCIL_TEST_DATA_HOME: ${{ env.NXF_WORKDIR }}
         run: |
           # use "docker_self_hosted" if it runs on self-hosted runner and inputs.profile=docker
           if [ "${{ inputs.profile }}" == "docker" ]; then
@@ -113,12 +134,7 @@ jobs:
             PROFILE=${{ inputs.profile }}
           fi
 
-          # nf-test directories need to be placed on an ephemeral disk accessible to docker.
-          # In our case, it's only the _work workspace for security reasons
-          mkdir -p /home/runner/_work/tmpdir
-
-          TMPDIR=/home/runner/_work/tmpdir \
-          NFT_WORKDIR=/home/runner/_work \
+          mkdir -p ${{ env.TMPDIR }}
           nf-test test \
             --profile=$PROFILE \
             --tap=test.tap \
@@ -134,26 +150,26 @@ jobs:
       - name: Tests logs
         if: failure()
         run: |
-            shopt -s globstar
-            for f in /home/runner/_work/tests/**/work/**/.command.log
-            do
+          shopt -s globstar
+          for f in ${{ env.NXF_WORKDIR }}/.nf-test/tests/**/work/**/.command.log
+          do
 
-            echo "$(sed '3q;d' $(dirname $f)/.command.run)"
-            cat $f
+          echo "$(sed '3q;d' $(dirname $f)/.command.run)"
+          cat $f
 
-            done
+          done
 
       - name: Upload images as artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: image_artifacts-${{ steps.test-run-identifier.outputs.tag }}
-          path: /home/runner/_work/tests/**/work/**/*.nii.gz
+          name: image_artifacts-${{ steps.test-run-identifier.outputs.uid }}
+          path: ${{ env.NXF_WORKDIR }}/.nf-test/tests/**/work/**/*.nii.gz
           overwrite: true
-          retention-days: 2
+          retention-days: 1
           compression-level: 9
 
       - name: Clean up
         if: always()
         run: |
-          sudo rm -rf /home/ubuntu/tests/
+          sudo rm -rf ${{ env.NXF_WORKDIR }}/.nf-test

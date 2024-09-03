@@ -14,6 +14,16 @@ on:
         options:
           - module
           - subworkflow
+      nextflow_version:
+        description: "Nextflow version to use"
+        required: false
+        type: string
+        default: "24.04.4"
+      nf_core_version:
+        description: "nf-core version to use"
+        required: false
+        type: string
+        default: "2.14.*"
   workflow_call:
     inputs:
       component:
@@ -24,6 +34,16 @@ on:
         description: "Type of component"
         required: true
         type: string
+      nextflow_version:
+        description: "Nextflow version to use"
+        required: false
+        type: string
+        default: "24.04.4"
+      nf_core_version:
+        description: "nf-core version to use"
+        required: false
+        type: string
+        default: "2.14.*"
 
 run-name: Lint ${{ inputs.component }}
 jobs:
@@ -33,36 +53,31 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip
-            ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-
-      - name: Install pip
-        run: python -m pip install --upgrade pip
-
+          cache: 'pip'
       - uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: "17"
+          cache: 'gradle'
+      - uses: nf-core/setup-nextflow@v2
+        with:
+          version: ${{ inputs.nextflow_version }}
 
-      - name: Setup Nextflow
-        uses: nf-core/setup-nextflow@v2
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
 
       - name: Install nf-core tools
         run: |
-          python -m pip install --upgrade --force-reinstall nf-core==2.14.*
+          python -m pip install --upgrade --force-reinstall nf-core==${{ inputs.nf_core_version }}
 
       - name: Lint ${{ inputs.type }} ${{ inputs.component }}
         env:
           GIT_CLONE_PROTECTION_ACTIVE: false
-        run: nf-core --verbose ${{ inputs.type }}s --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.component }}
+        run: |
+          nf-core --verbose ${{ inputs.type }}s \
+            --git-remote https://github.com/${{ github.repository }}.git \
+            --branch ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            lint ${{ inputs.component }}
