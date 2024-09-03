@@ -51,7 +51,7 @@ jobs:
         run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
 
   nf-test-changes:
-    name: nf-test-changes
+    name: compute - changes
     runs-on: ubuntu-latest
     outputs:
       paths: ${{ steps.changes.outputs.components }}
@@ -82,7 +82,7 @@ jobs:
           echo ${{ steps.components.outputs.subworkflows }}
 
   lint-modules:
-    name: lint-modules
+    name: lint - modules
     needs: [nf-test-changes]
     if: ${{ (needs.nf-test-changes.outputs.modules != '[]') }}
     strategy:
@@ -98,7 +98,7 @@ jobs:
     secrets: inherit
 
   lint-subworkflows:
-    name: lint-subworkflows
+    name: lint - subworkflows
     needs: [nf-test-changes]
     if: ${{ ( needs.nf-test-changes.outputs.subworkflows != '[]') }}
     strategy:
@@ -114,7 +114,7 @@ jobs:
     secrets: inherit
 
   nf-test:
-    name: nf-test
+    name: test
     needs: [nf-test-changes]
     if: ${{ ( needs.nf-test-changes.outputs.paths != '[]' ) }}
     strategy:
@@ -136,6 +136,7 @@ jobs:
     secrets: inherit
 
   confirm-pass:
+    name: status
     runs-on: ubuntu-latest
     needs: [prettier, editorconfig, nf-test-changes, lint-modules, lint-subworkflows, nf-test]
     if: ${{ !cancelled() }}

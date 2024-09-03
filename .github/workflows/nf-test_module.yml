@@ -44,7 +44,7 @@ run-name: Run nf-test on ${{ inputs.paths }}
 jobs:
   nf-test:
     runs-on: ${{ inputs.runner }}
-    name: nf-test-${{ inputs.paths }}
+    name: test - ${{ inputs.paths || 'skipped' }}
     if: inputs.paths != '' && inputs.profile != ''
     env:
       NXF_ANSI_LOG: false
