@@ -29,7 +29,7 @@ run-name: Lint ${{ inputs.component }}
 jobs:
   nf-core-lint:
     runs-on: ubuntu-latest
-    name: nf-core-lint-${{ inputs.component }}
+    name: lint - ${{ inputs.component }}
 
     steps:
       - uses: actions/checkout@v4

@@ -44,7 +44,7 @@ run-name: Run nf-test on ${{ inputs.paths }}
 jobs:
   nf-test:
     runs-on: ${{ inputs.runner }}
-    name: nf-test-${{ inputs.paths }}
+    name: test - ${{ inputs.paths || 'skipped' }}
     if: inputs.paths != '' && inputs.profile != ''
     env:
       NXF_ANSI_LOG: false
@@ -68,6 +68,10 @@ jobs:
         # and work directories are set up from ephemeral disks. See nf-core/setup-nf-test/issues/6
         with:
           version: ${{ env.NFTEST_VER }}
+
+      - name: Fix nf-test launching jvm with too much memory
+        run: |
+          sed -i 's/-Xmx10g//' $(which nf-test)
 
       - name: Set up Python
         uses: actions/setup-python@v5
