@@ -20,7 +20,7 @@ nextflow_process {
             script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
             process {
                 """
-                input[0] = Channel.from( [ "heavy.zip" ] )
+                input[0] = Channel.from( [ "T1w.zip" ] )
                 input[1] = "test.load-test-data"
                 """
             }
@@ -34,7 +34,7 @@ nextflow_process {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true,),
+                        file("\${test_data_directory}/T1w.nii.gz", checkIfExists: true,),
                         []
                     ]
                 }
@@ -45,7 +45,15 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    niftiMD5SUM(process.out.wm_mask.get(0).get(1)),
+                    niftiMD5SUM(process.out.gm_mask.get(0).get(1)),
+                    niftiMD5SUM(process.out.csf_mask.get(0).get(1)),
+                    niftiMD5SUM(process.out.wm_map.get(0).get(1)),
+                    niftiMD5SUM(process.out.gm_map.get(0).get(1)),
+                    niftiMD5SUM(process.out.csf_map.get(0).get(1)),
+                    process.out.versions
+                ).match() }
             )
         }
     }
@@ -56,8 +64,8 @@ nextflow_process {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true,),
-                        file("\${test_data_directory}/anat/anat_mask.nii.gz", checkIfExists: true)
+                        file("\${test_data_directory}/T1w.nii.gz", checkIfExists: true,),
+                        file("\${test_data_directory}/T1w_mask.nii.gz", checkIfExists: true)
                     ]
                 }
                 """
@@ -67,7 +75,15 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    niftiMD5SUM(process.out.wm_mask.get(0).get(1)),
+                    niftiMD5SUM(process.out.gm_mask.get(0).get(1)),
+                    niftiMD5SUM(process.out.csf_mask.get(0).get(1)),
+                    niftiMD5SUM(process.out.wm_map.get(0).get(1)),
+                    niftiMD5SUM(process.out.gm_map.get(0).get(1)),
+                    niftiMD5SUM(process.out.csf_map.get(0).get(1)),
+                    process.out.versions
+                ).match() }
             )
         }
     }
