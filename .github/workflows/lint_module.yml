@@ -19,11 +19,6 @@ on:
         required: false
         type: string
         default: "24.04.4"
-      nf_core_version:
-        description: "nf-core version to use"
-        required: false
-        type: string
-        default: "2.14.*"
   workflow_call:
     inputs:
       component:
@@ -39,11 +34,6 @@ on:
         required: false
         type: string
         default: "24.04.4"
-      nf_core_version:
-        description: "nf-core version to use"
-        required: false
-        type: string
-        default: "2.14.*"
 
 run-name: Lint ${{ inputs.component }}
 jobs:
@@ -57,6 +47,9 @@ jobs:
         with:
           python-version: "3.11"
           cache: 'pip'
+      - uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: "1.8.*"
       - uses: actions/setup-java@v4
         with:
           distribution: "temurin"
@@ -65,13 +58,9 @@ jobs:
       - uses: nf-core/setup-nextflow@v2
         with:
           version: ${{ inputs.nextflow_version }}
-
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
-
       - name: Install nf-core tools
         run: |
-          python -m pip install --upgrade --force-reinstall nf-core==${{ inputs.nf_core_version }}
+          poetry install --no-root
 
       - name: Lint ${{ inputs.type }} ${{ inputs.component }}
         env:

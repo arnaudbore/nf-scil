@@ -128,7 +128,6 @@ jobs:
       type: "module"
       component: ${{ matrix.module }}
       nextflow_version: ${{ inputs.nextflow_version }}
-      nf_core_version: ${{ inputs.nf_core_version }}
     secrets: inherit
 
   lint-subworkflows:
@@ -146,7 +145,6 @@ jobs:
       type: "subworkflow"
       component: ${{ matrix.subworkflow }}
       nextflow_version: ${{ inputs.nextflow_version }}
-      nf_core_version: ${{ inputs.nf_core_version }}
     secrets: inherit
 
   nf-test:
