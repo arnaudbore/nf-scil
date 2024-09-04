@@ -83,7 +83,6 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "17"
-          cache: 'gradle'
       - uses: nf-core/setup-nextflow@v2
         with:
           version: ${{ inputs.nextflow_version }}
