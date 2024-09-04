@@ -46,7 +46,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Prettier
-        run: npm install -g prettier@3.1.0
+        run: npm install
 
       - name: Run Prettier --check
         run: prettier --check .
@@ -61,7 +61,7 @@ jobs:
           cache: 'npm'
 
       - name: Install editorconfig-checker
-        run: npm install -g editorconfig-checker
+        run: npm install
 
       - name: Run ECLint check
         run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
