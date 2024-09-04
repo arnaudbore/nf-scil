@@ -166,7 +166,7 @@ jobs:
           for t in ${{ env.NXF_WORKDIR }}/.nf-test/tests/*
           do
             tag=$(cat $t/meta/mock.nf | grep -E 'include \{.*' | tail -1 | cut -d' ' -f3)_$i
-            cp $(dirname $t)/report.html tests_reports/${tag}.html
+            cp $t/report.html tests_reports/${tag}.html
             i=$((i+1))
           done
 
