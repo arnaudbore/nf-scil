@@ -159,15 +159,48 @@ jobs:
 
           done
 
-      - name: Upload images as artifacts
+      - name: Collect test reports
+        if: always()
+        run: |
+          mkdir -p tests_reports
+          i=1
+          for t in ${{ env.NXF_WORKDIR }}/.nf-test/tests/*
+          do
+            tag=$(cat $t/meta/mock.nf | grep -E 'include \{.*' | tail -1 | cut -d' ' -f3)_$i
+            cp $(dirname $t)/report.html tests_reports/${tag}.html
+            i=$((i+1))
+          done
+
+      - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: image_artifacts-${{ steps.test-run-identifier.outputs.uid }}
-          path: ${{ env.NXF_WORKDIR }}/.nf-test/tests/**/work/**/*.nii.gz
+          name: reports-${{ steps.test-run-identifier.outputs.uid }}
+          path: tests_reports/
           overwrite: true
           retention-days: 1
           compression-level: 9
+
+      - name: Collect test working directories
+        if: failure()
+        run: |
+          mkdir -p tests_workdir
+          for t in ${{ env.NXF_WORKDIR }}/.nf-test/tests/**/work/**/.command.log
+          do
+            tag=$(sed -n '3p' $(dirname $t)/.command.run | cut -d' ' -f3 | tr -d "'")
+            cp -R $(dirname $t) tests_workdir/$tag
+          done
+
+      - name: Upload test working directories
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tests-workdir-${{ steps.test-run-identifier.outputs.uid }}
+          path: tests_workdir/
+          overwrite: true
+          retention-days: 1
+          compression-level: 9
+          include-hidden-files: true
 
       - name: Clean up
         if: always()
