@@ -49,7 +49,7 @@ jobs:
         run: npm ci
 
       - name: Run Prettier --check
-        run: prettier --check .
+        run: npx prettier --check .
 
   editorconfig:
     runs-on: ubuntu-latest
@@ -64,7 +64,7 @@ jobs:
         run: npm ci
 
       - name: Run ECLint check
-        run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
+        run: npx editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
 
   publish-test-data-treeview-extension:
     # Runs only when the event is a push to main
