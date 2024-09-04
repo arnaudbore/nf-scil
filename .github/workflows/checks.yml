@@ -66,22 +66,6 @@ jobs:
       - name: Run ECLint check
         run: npx editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
 
-  publish-test-data-treeview-extension:
-    # Runs only when the event is a push to main
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    uses: ./.github/workflows/publish_extension.yml
-    with:
-      name: "test-data-treeview"
-    secrets: inherit
-
-  publish-extension-package:
-    # Runs only when the event is a push to main
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    uses: ./.github/workflows/publish_extension.yml
-    with:
-      name: "extension-package"
-    secrets: inherit
-
   nf-test-changes:
     name: compute - changes
     runs-on: ubuntu-latest
