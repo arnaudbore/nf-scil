@@ -31,10 +31,6 @@ process SEGMENTATION_FASTSURFER {
                                         --seg_only --py python3 \
                                         ${acq3T}
 
-    mri_ca_register -align-after -nobigventricles -mask ${SUBJECTS_DIR}/mri/brainmask.mgz \
-        -T ${SUBJECTS_DIR}/mri/transforms/talairach.lta -threads $params.nb_threads ${SUBJECTS_DIR}/mri/norm.mgz \
-        \${FREESURFER_HOME}/average/RB_all_2020-01-02.gca ${SUBJECTS_DIR}/mri/transforms/talairach.m3z
-
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         fastsurfer: \$($FASTSURFER_HOME/run_fastsurfer.sh --version)
