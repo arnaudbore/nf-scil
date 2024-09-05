@@ -7,7 +7,7 @@
         "url": "https://github.com/scilus/nf-scil.git"
     },
     "icon": "icon.avif",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "publisher": "AlexVCaron",
     "engines": {
         "vscode": "^1.84.0"
@@ -54,6 +54,7 @@
         "christian-kohler.npm-intellisense",
         "dbaeumer.vscode-eslint",
         "connor4312.esbuild-problem-matchers",
-        "ms-vscode.extension-test-runner"
+        "ms-vscode.extension-test-runner",
+        "AlexVCaron.nf-scil-test-data-treeview"
     ]
 }
