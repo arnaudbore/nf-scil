@@ -1,0 +1,129 @@
+{
+    "name": "nf-scil-test-data-treeview",
+    "displayName": "nf-scil Test Data Treeview",
+    "description": "Test data treeview for nf-scil",
+    "version": "0.0.1",
+    "publisher": "AlexVCaron",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scilus/nf-scil.git"
+    },
+    "engines": {
+        "vscode": "^1.92.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "views": {
+            "explorer": [
+                {
+                    "id": "nfscilTestData",
+                    "name": "nf-scil Test Data"
+                }
+            ]
+        },
+        "menus": {
+            "view/title": [
+                {
+                    "command": "nfscilTestData.clearCache",
+                    "when": "view == nfscilTestData",
+                    "group": "navigation"
+                },
+                {
+                    "command": "nfscilTestData.loadListing",
+                    "when": "view == nfscilTestData",
+                    "group": "navigation"
+                },
+                {
+                    "command": "nfscilTestData.forceDownloadListing",
+                    "when": "view == nfscilTestData",
+                    "group": "navigation"
+                },
+                {
+                    "command": "nfscilTestData.refreshEntry",
+                    "when": "view == nfscilTestData",
+                    "group": "navigation"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "nfscilTestData.openInEditor",
+                    "when": "view == nfscilTestData && viewItem == testDataFile",
+                    "group": "inline"
+                },
+                {
+                    "command": "nfscilTestData.saveAs",
+                    "when": "view == nfscilTestData && viewItem == testDataFile",
+                    "group": "inline"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "nfscilTestData.refreshEntry",
+                "title": "Refresh packages",
+                "icon": "$(refresh)"
+            },
+            {
+                "command": "nfscilTestData.clearCache",
+                "title": "Clear cache",
+                "icon": "$(trash)"
+            },
+            {
+                "command": "nfscilTestData.loadListing",
+                "title": "Load package listing",
+                "icon": "$(list-tree)"
+            },
+            {
+                "command": "nfscilTestData.forceDownloadListing",
+                "title": "Force online package listing",
+                "icon": "$(cloud-download)"
+            },
+            {
+                "command": "nfscilTestData.openInEditor",
+                "title": "Open file in the editor",
+                "icon": "$(eye)"
+            },
+            {
+                "command": "nfscilTestData.saveAs",
+                "title": "Save as...",
+                "icon": "$(desktop-download)"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run package",
+        "compile": "npm run check-types && npm run lint && node esbuild.js",
+        "watch": "npm-run-all -p watch:*",
+        "watch:esbuild": "node esbuild.js --watch",
+        "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+        "package": "npm run check-types && npm run lint && node esbuild.js --production",
+        "compile-tests": "tsc -p . --outDir out",
+        "watch-tests": "tsc -p . -w --outDir out",
+        "pretest": "npm run compile-tests && npm run compile && npm run lint",
+        "check-types": "tsc --noEmit",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/adm-zip": "^0.5.5",
+        "@types/mocha": "^10.0.7",
+        "@types/node": "20.x",
+        "@types/vscode": "^1.92.0",
+        "@typescript-eslint/eslint-plugin": "^7.14.1",
+        "@typescript-eslint/parser": "^7.11.0",
+        "@vscode/test-cli": "^0.0.9",
+        "@vscode/test-electron": "^2.4.0",
+        "esbuild": "^0.21.5",
+        "eslint": "^8.57.0",
+        "npm-run-all": "^4.1.5",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "adm-zip": "^0.5.15"
+    }
+}

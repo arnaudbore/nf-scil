@@ -75,21 +75,21 @@ ONCE=false
 PROFILE="docker"
 
 while getopts "e:uoph:" opt; do
-  case $opt in
-    e) EXCLUDES+=($OPTARG)
-    ;;
-    u) UPDATE_SNAPS=true
-    ;;
-    o) ONCE=true
-    ;;
-    p) PROFILE="$OPTARG"
-    ;;
-    h) echo "$DESCRIPTION"
-    ;;
-    \?) echo "Invalid option -$OPTARG" >&2
-        echo "$DESCRIPTION"
-    ;;
-  esac
+    case $opt in
+        e) EXCLUDES+=($OPTARG)
+        ;;
+        u) UPDATE_SNAPS=true
+        ;;
+        o) ONCE=true
+        ;;
+        p) PROFILE="$OPTARG"
+        ;;
+        h) echo "$DESCRIPTION"
+        ;;
+        \?) echo "Invalid option -$OPTARG" >&2
+            echo "$DESCRIPTION"
+        ;;
+    esac
 done
 
 

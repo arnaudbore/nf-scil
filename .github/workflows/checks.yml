@@ -1,6 +1,22 @@
 name: nf-scil checks
 on:
   workflow_call:
+    inputs:
+      nextflow_version:
+        description: "Nextflow version to use"
+        required: false
+        type: string
+        default: "24.04.4"
+      nf_core_version:
+        description: "nf-core version to use"
+        required: false
+        type: string
+        default: "2.14.*"
+      nf_test_version:
+        description: "nf-test version to use"
+        required: false
+        type: string
+        default: "0.9.0-rc1"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -11,6 +27,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+        with:
+          cache: 'pip'
       - uses: pre-commit/action@v3.0.1
         # FIXME Flip this off once we get to less than a couple hundred. Adding
         # this so it will only run against changed files. It'll make it much
@@ -21,34 +39,32 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Install NodeJS
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: 'npm'
 
       - name: Install Prettier
-        run: npm install -g prettier@3.1.0
+        run: npm ci
 
       - name: Run Prettier --check
-        run: prettier --check .
+        run: npx prettier --check .
 
   editorconfig:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: 'npm'
 
       - name: Install editorconfig-checker
-        run: npm install -g editorconfig-checker
+        run: npm ci
 
       - name: Run ECLint check
-        run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
+        run: npx editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
 
   nf-test-changes:
     name: compute - changes
@@ -95,6 +111,7 @@ jobs:
     with:
       type: "module"
       component: ${{ matrix.module }}
+      nextflow_version: ${{ inputs.nextflow_version }}
     secrets: inherit
 
   lint-subworkflows:
@@ -111,12 +128,13 @@ jobs:
     with:
       type: "subworkflow"
       component: ${{ matrix.subworkflow }}
+      nextflow_version: ${{ inputs.nextflow_version }}
     secrets: inherit
 
   nf-test:
     name: test
     needs: [nf-test-changes]
-    if: ${{ ( needs.nf-test-changes.outputs.paths != '[]' ) }}
+    if: ${{ ( github.repository == 'scilus/nf-scil' ) && ( needs.nf-test-changes.outputs.paths != '[]' ) }}
     strategy:
       fail-fast: false
       matrix:
@@ -133,12 +151,29 @@ jobs:
       profile: ${{ matrix.profile }}
       paths: ${{ matrix.path }}
       runner: ${{ matrix.runner }}
+      nextflow_version: ${{ inputs.nextflow_version }}
+      nf_test_version: ${{ inputs.nf_test_version }}
     secrets: inherit
+
+  upload-reports:
+    name: upload reports
+    needs: [nf-test-changes, nf-test]
+    if: ${{ ( needs.nf-test-changes.outputs.paths != '[]' ) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact/merge@v4
+        with:
+          name: nf-test-reports
+          pattern: reports-*
+          delete-merged: true
+          retention-days: 10
+          compression-level: 9
 
   confirm-pass:
     name: status
     runs-on: ubuntu-latest
-    needs: [prettier, editorconfig, nf-test-changes, lint-modules, lint-subworkflows, nf-test]
+    needs: [prettier, editorconfig, nf-test-changes, lint-modules, lint-subworkflows, nf-test, upload-reports]
     if: ${{ !cancelled() }}
     steps:
       - name: All tests ok

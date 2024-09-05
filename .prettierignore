@@ -5,6 +5,7 @@ docs/api/_build
 testing
 nf_core/module-template/modules/meta.yml
 nf_core/module-template/tests/test.yml
+**/package-lock.json
 .github
 .devcontainer
 .vscode
