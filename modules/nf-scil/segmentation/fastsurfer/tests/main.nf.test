@@ -17,8 +17,7 @@ nextflow_process {
                 script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
                 process {
                     """
-                    input[0] = Channel.from( [ "Freesurfer.zip",
-                                               "T1w.zip" ] )
+                    input[0] = Channel.from( [ "freesurfer.zip" ] )
                     input[1] = "test.load-test-data"
                     """
                 }
@@ -29,25 +28,13 @@ nextflow_process {
         when {
             process {
                 """
-                ch_split_test_data = LOAD_DATA.out.test_data_directory
-                    .branch{
-                        freesurfer: it.simpleName == "Freesurfer"
-                        anat: it.simpleName == "T1w"
-                    }
-                ch_license = ch_split_test_data.freesurfer.map{
+                input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test' ],
+                        file("\${test_data_directory}/anat_image.nii.gz"),
                         file("\${test_data_directory}/license.txt")
                     ]
                 }
-                ch_anat = ch_split_test_data.anat.map{
-                    test_data_directory -> [
-                        [ id:'test' ],
-                        file("\${test_data_directory}/T1w.nii.gz")
-                    ]
-                }
-                input[0] = ch_anat
-                    .join(ch_license)
                 """
             }
         }
@@ -59,5 +46,5 @@ nextflow_process {
                     process.out.versions).match()}
             )
         }
-   }
+    }
 }
