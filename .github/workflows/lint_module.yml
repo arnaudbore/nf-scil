@@ -68,5 +68,4 @@ jobs:
         run: |
           poetry run nf-core --verbose ${{ inputs.type }}s \
             --git-remote https://github.com/${{ github.repository }}.git \
-            --branch ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}} \
             lint ${{ inputs.component }}
