@@ -51,5 +51,7 @@
     "T1w.zip": "8e9cf2beec4595d407732152a19589f5",
     "dti.zip": "ba866c59fc4d984f626691a6b941fc32",
     "responses.zip": "1a5b862b91c72740bcce0431a1f9254a",
-    "segmentation.zip": "ab51be6d142ad1a8e30ffb964447d010"
+    "segmentation.zip": "ab51be6d142ad1a8e30ffb964447d010",
+    "freesurfer_full.zip": "203e482426065326ff5920368d4d7908",
+    "freesurfer_nifti.zip": "adb5ac4cf5c45040339e04e7c142e8c9"
 }

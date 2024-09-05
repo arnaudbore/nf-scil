@@ -20,7 +20,7 @@ nextflow_workflow {
                 script "../../load_test_data/main.nf"
                 process {
                     """
-                    input[0] = Channel.from( [ "heavy.zip" ] )
+                    input[0] = Channel.from( [ "T1w.zip", "freesurfer_nifti.zip" ] )
                     input[1] = "test.load-test-data"
                     """
                 }
@@ -32,10 +32,15 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
+                ch_split_test_data = LOAD_DATA.out.test_data_directory
+                    .branch{
+                        t1w: it.simpleName == "T1w"
+                        freesurfer: it.simpleName == "freesurfer_nifti"
+                    }
+                input[0] = ch_split_test_data.t1w.map{
                     test_data_directory -> [
-                        [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true),
+                        [ id:'test' ],
+                        file("\${test_data_directory}/T1w.nii.gz", checkIfExists: true),
                         []
                     ]}
                 input[1] = []
@@ -56,12 +61,17 @@ nextflow_workflow {
         when {
             workflow {
                 """
+                ch_split_test_data = LOAD_DATA.out.test_data_directory
+                    .branch{
+                        t1w: it.simpleName == "T1w"
+                        freesurfer: it.simpleName == "freesurfer_nifti"
+                    }
                 input[0] = []
-                input[1] = LOAD_DATA.out.test_data_directory.map{
+                input[1] = ch_split_test_data.freesurfer.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/freesurfer/aparc_aseg.nii.gz", checkIfExists: true),
-                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true),
+                        file("\${test_data_directory}/aparc+aseg.nii.gz", checkIfExists: true),
+                        file("\${test_data_directory}/wmparc.nii.gz", checkIfExists: true),
                         []
                     ]}
                 """
