@@ -138,7 +138,7 @@ run the following commands :
 ```bash
 pip install pipx
 pipx ensurepath
-pipx install poetry
+pipx install poetry==1.8.*
 ```
 
 > [!NOTE]
