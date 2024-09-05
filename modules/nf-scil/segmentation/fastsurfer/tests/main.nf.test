@@ -1,0 +1,63 @@
+nextflow_process {
+
+    name "Test Process SEGMENTATION_FASTSURFER"
+    script "../main.nf"
+    process "SEGMENTATION_FASTSURFER"
+
+    tag "modules"
+    tag "modules_nfcore"
+    tag "segmentation"
+    tag "segmentation/fastsurfer"
+
+    tag "subworkflows"
+    tag "subworkflows/load_test_data"
+
+    setup {
+            run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
+                script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
+                process {
+                    """
+                    input[0] = Channel.from( [ "Freesurfer.zip",
+                                               "T1w.zip" ] )
+                    input[1] = "test.load-test-data"
+                    """
+                }
+            }
+        }
+
+    test("segmentation - fastsurfer") {
+        when {
+            process {
+                """
+                ch_split_test_data = LOAD_DATA.out.test_data_directory
+                    .branch{
+                        freesurfer: it.simpleName == "Freesurfer"
+                        anat: it.simpleName == "T1w"
+                    }
+                ch_license = ch_split_test_data.freesurfer.map{
+                    test_data_directory -> [
+                        [ id:'test' ],
+                        file("\${test_data_directory}/license.txt")
+                    ]
+                }
+                ch_anat = ch_split_test_data.anat.map{
+                    test_data_directory -> [
+                        [ id:'test' ],
+                        file("\${test_data_directory}/T1w.nii.gz")
+                    ]
+                }
+                input[0] = ch_anat
+                    .join(ch_license)
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    file(process.out.fastsurferdirectory.get(0).get(1)).name,
+                    process.out.versions).match()}
+            )
+        }
+   }
+}
