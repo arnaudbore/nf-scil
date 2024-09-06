@@ -1,12 +1,12 @@
 {
     "registration - easyreg": {
         "content": [
-            "test_reference_segmentation.nii.gz:md5:header,d7d123ff54be81edabd50a08e6c0ef86,data,8043f2a051e6c31c80405fd2ae6b5c3d",
-            "test_floating_segmentation.nii.gz:md5:header,d773c9507f9637b269ff0293e5b571b6,data,9f90a28d360043b9a9a2f6caecd9d97f",
-            "test_reference_registered.nii.gz:md5:header,d1b4c1d6ea3958a942237859fc5c8bf9,data,db57287a4b6d1f2136e0f148a19a9afd",
-            "test_floating_registered.nii.gz:md5:header,5c6a53aecafb33aa215890c921911298,data,4bf56478dc20f15903c8933825a4d875",
-            "test_forward_field.nii.gz:md5:header,a44c016d46c40fb91d2b859a3452afe3,data,323c4eafea83b75bea61ec69b2911ae4",
-            "test_backward_field.nii.gz:md5:header,de97fc6763dae228667018a601d72f54,data,3991957cdd92a5519848eeb3cb30e949",
+            "test_reference_segmentation.nii.gz:md5:header,6d3dcf7b63ee63325ce7ee31be7addee,data,e695f03c01ea4ee87e44dc5181ce7508",
+            "test_floating_segmentation.nii.gz:md5:header,d559b931014ef191f9af17abf1152a3c,data,acdf1eb0b07f70506b090eba821e81ef",
+            "test_reference_registered.nii.gz:md5:header,ec5893cd9ea024e630c4444bd914c331,data,9f4213a80ce723b03f63a08ef9d25bbd",
+            "test_floating_registered.nii.gz:md5:header,36bc13971b50b21d2534552b329a064b,data,193460c56f25251e16fc4f27b1b56d10",
+            "test_forward_field.nii.gz:md5:header,e16d57d81d3089b9b7d86e5fda020a01,data,12cc0196e12a3c8a8ca32c46ffcdc3ff",
+            "test_backward_field.nii.gz:md5:header,0db0a80786ff39864cc17506ed1a0146,data,3ba229de526ae136e8e5aeae0f1e29bc",
             [
                 "versions.yml:md5,4661210880c42a986923e8257f64c760"
             ]
@@ -15,6 +15,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.4"
         },
-        "timestamp": "2024-09-03T19:44:38.393973"
+        "timestamp": "2024-09-06T15:36:15.876796"
     }
 }
