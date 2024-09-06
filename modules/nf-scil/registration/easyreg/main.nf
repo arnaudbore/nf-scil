@@ -29,6 +29,10 @@ process REGISTRATION_EASYREG {
     def affine = task.ext.affine ? "--affine_only " : ""
 
     """
+    export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
+    export OMP_NUM_THREADS=1
+    export OPENBLAS_NUM_THREADS=1
+
     if [[ -f "$ref_segmentation" ]];
     then
         reference_segmentation=$ref_segmentation
