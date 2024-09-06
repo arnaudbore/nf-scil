@@ -11,6 +11,19 @@ concurrency:
 
 jobs:
   checks:
-    if: github.repository == 'scilus/nf-scil'
     uses: ./.github/workflows/checks.yml
+    secrets: inherit
+
+  publish-test-data-treeview-extension:
+    if: github.repository == 'scilus/nf-scil'
+    uses: ./.github/workflows/publish_extension.yml
+    with:
+      name: "test-data-treeview"
+    secrets: inherit
+
+  publish-extension-package:
+    if: github.repository == 'scilus/nf-scil'
+    uses: ./.github/workflows/publish_extension.yml
+    with:
+      name: "extension-package"
     secrets: inherit

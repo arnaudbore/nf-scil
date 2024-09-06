@@ -8,7 +8,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mask_wm.nii.gz:md5,2dc635526adb6ef185300acc326ead13"
+                        "test__mask_wm.nii.gz:md5,0ed4a06defc512b1b898d6e0c3ef678a"
                     ]
                 ],
                 "1": [
@@ -17,7 +17,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mask_gm.nii.gz:md5,247106ed727133078fe262b0b8244071"
+                        "test__mask_gm.nii.gz:md5,a363d6207419b08346a7c05c6525430e"
                     ]
                 ],
                 "2": [
@@ -26,7 +26,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mask_csf.nii.gz:md5,b92db7e454c95afadea320a143912ce8"
+                        "test__mask_csf.nii.gz:md5,3dbcb3eefb507bedab91fb80ed636f36"
                     ]
                 ],
                 "3": [
@@ -50,7 +50,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mask_csf.nii.gz:md5,b92db7e454c95afadea320a143912ce8"
+                        "test__mask_csf.nii.gz:md5,3dbcb3eefb507bedab91fb80ed636f36"
                     ]
                 ],
                 "gm_map": [
@@ -62,7 +62,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mask_gm.nii.gz:md5,247106ed727133078fe262b0b8244071"
+                        "test__mask_gm.nii.gz:md5,a363d6207419b08346a7c05c6525430e"
                     ]
                 ],
                 "versions": [
@@ -77,16 +77,16 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mask_wm.nii.gz:md5,2dc635526adb6ef185300acc326ead13"
+                        "test__mask_wm.nii.gz:md5,0ed4a06defc512b1b898d6e0c3ef678a"
                     ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2024-05-09T20:53:29.945493"
+        "timestamp": "2024-09-05T02:45:52.364394"
     },
     "anatomical_segmentation - fslfast": {
         "content": [
@@ -94,55 +94,49 @@
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__mask_wm.nii.gz:md5,f849e268007a747714e342162f13f631"
+                        "test__mask_wm.nii.gz:md5,98d75f5c0ddd2b7f2bfff8fbf1877e34"
                     ]
                 ],
                 "1": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__mask_gm.nii.gz:md5,39396421c6d1d32ea7943a5ec7a49dce"
+                        "test__mask_gm.nii.gz:md5,a840f08c5b90cb351d3272d8cab6f00c"
                     ]
                 ],
                 "2": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__mask_csf.nii.gz:md5,d0fbc088059f17faff38fbcd33257d27"
+                        "test__mask_csf.nii.gz:md5,f22037987a38e5132ccbb2887ee71842"
                     ]
                 ],
                 "3": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__map_wm.nii.gz:md5,1d5a9655d4e3c832b14c83e9424b00fc"
+                        "test__map_wm.nii.gz:md5,c7d666c66baea2132d70be38017c6901"
                     ]
                 ],
                 "4": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__map_gm.nii.gz:md5,f7e51eb14af645c687db5d2c6a4f5bf4"
+                        "test__map_gm.nii.gz:md5,6dbc993e43f6efcdd6a3a097df2b4574"
                     ]
                 ],
                 "5": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__map_csf.nii.gz:md5,9c14d8f70e69d641d9c214d0d52b3663"
+                        "test__map_csf.nii.gz:md5,dcc224f10f31ee306491ebbdcfbe5bfe"
                     ]
                 ],
                 "6": [
@@ -151,37 +145,33 @@
                 "csf_map": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__map_csf.nii.gz:md5,9c14d8f70e69d641d9c214d0d52b3663"
+                        "test__map_csf.nii.gz:md5,dcc224f10f31ee306491ebbdcfbe5bfe"
                     ]
                 ],
                 "csf_mask": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__mask_csf.nii.gz:md5,d0fbc088059f17faff38fbcd33257d27"
+                        "test__mask_csf.nii.gz:md5,f22037987a38e5132ccbb2887ee71842"
                     ]
                 ],
                 "gm_map": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__map_gm.nii.gz:md5,f7e51eb14af645c687db5d2c6a4f5bf4"
+                        "test__map_gm.nii.gz:md5,6dbc993e43f6efcdd6a3a097df2b4574"
                     ]
                 ],
                 "gm_mask": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__mask_gm.nii.gz:md5,39396421c6d1d32ea7943a5ec7a49dce"
+                        "test__mask_gm.nii.gz:md5,a840f08c5b90cb351d3272d8cab6f00c"
                     ]
                 ],
                 "versions": [
@@ -190,27 +180,25 @@
                 "wm_map": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__map_wm.nii.gz:md5,1d5a9655d4e3c832b14c83e9424b00fc"
+                        "test__map_wm.nii.gz:md5,c7d666c66baea2132d70be38017c6901"
                     ]
                 ],
                 "wm_mask": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test__mask_wm.nii.gz:md5,f849e268007a747714e342162f13f631"
+                        "test__mask_wm.nii.gz:md5,98d75f5c0ddd2b7f2bfff8fbf1877e34"
                     ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2024-06-17T14:24:57.988893"
+        "timestamp": "2024-09-05T02:38:48.75146"
     }
 }

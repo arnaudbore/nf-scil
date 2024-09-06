@@ -1,0 +1,16 @@
+name: Assign PR reviewers
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+
+jobs:
+  assign-reviewers:
+    name: Assign reviewers
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'scilus/nf-scil' }}
+    steps:
+      - uses: necojackarc/auto-request-review@v0.13.0
+        with:
+          config: .github/reviewers.yml
+          token: ${{ secrets.GITHUB_TOKEN }}

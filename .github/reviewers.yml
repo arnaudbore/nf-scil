@@ -1,0 +1,70 @@
+reviewers:
+  defaults:
+    - repository-owners
+    - team:Reviewers_nf-scil
+    - AlexVCaron
+
+  groups:
+    repository-owners:
+      - AlexVCaron
+      - arnaudbore
+    infrastructure-leads:
+      - AlexVCaron
+    testing-leads:
+      - AlexVCaron
+    documentation-leads:
+      - team:Reviewers_nf-scil
+    surgery-leads:
+      - GuillaumeTh
+    diffusion-mri-leads:
+      - GuillaumeTh
+      - AlexVCaron
+
+  per_author:
+    anroy1:
+      - GuillaumeTh
+      - surgery-leads
+      - diffusion-mri-leads
+
+files:
+  '**':
+    - infrastructure-leads
+  '.devcontainer/**':
+    - infrastructure-leads
+  '.github/**':
+    - infrastructure-leads
+  '.github/ISSUE_TEMPLATE/**':
+    - infrastructure-leads
+    - documentation-leads
+  '.github/PULL_REQUEST_TEMPLATE/**':
+    - infrastructure-leads
+    - documentation-leads
+  '.github/pull_request_template.md':
+    - infrastructure-leads
+    - documentation-leads
+  '.vscode/**':
+    - infrastructure-leads
+  'nf-scil-extensions/**':
+    - infrastructure-leads
+  'tests/**':
+    - testing-leads
+  'docs/**':
+    - documentation-leads
+  'modules/nf-scil/**':
+    - team:Reviewers_nf-scil
+  'subworkflows/nf-scil/**':
+    - team:Reviewers_nf-scil
+  'LICENSE':
+    - repository-owners
+  'CONTRIBUTING.md':
+    - repository-owners
+    - documentation-leads
+
+options:
+  ignore_draft: true
+  ignored_keywords:
+    - WIP
+    - Work in progress
+  enable_group_assignments: true
+  number_of_reviewers: 2
+  last_files_match_only: false
