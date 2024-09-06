@@ -8,6 +8,8 @@ jobs:
   assign-reviewers:
     name: Assign reviewers
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     if: ${{ github.repository == 'scilus/nf-scil' }}
     steps:
       - uses: necojackarc/auto-request-review@v0.13.0
