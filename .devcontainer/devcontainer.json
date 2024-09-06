@@ -53,35 +53,38 @@
     "customizations": {
         "vscode": {
             "settings": {
-                "python.analysis.exclude": [
-                    "${containerWorkspaceFolder}/.dvc",
-                    "${containerWorkspaceFolder}/.pytest_cache",
-                    "${containerWorkspaceFolder}/.test_data",
-                    "${containerWorkspaceFolder}/.vscode",
-                    "${containerWorkspaceFolder}/.venv",
-                    "${containerWorkspaceFolder}/nf-scil-extensions",
-                    "**/__pycache__",
-                    "${containerWorkspaceFolder}/.git"
-                ],
-                "python.analysis.ignore": [
-                    "${containerWorkspaceFolder}/.dvc",
-                    "${containerWorkspaceFolder}/.pytest_cache",
-                    "${containerWorkspaceFolder}/.test_data",
-                    "${containerWorkspaceFolder}/.vscode",
-                    "${containerWorkspaceFolder}/.venv",
-                    "${containerWorkspaceFolder}/nf-scil-extensions",
-                    "**/__pycache__",
-                    "${containerWorkspaceFolder}/.git"
-                ],
-                "python.createEnvironment.trigger": "off",
-                "python.interpreter.infoVisibility": "always",
-                "python.poetryPath": "poetry",
-                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv",
-                "python.terminal.activateEnvironment": true,
-                "python.terminal.activateEnvInCurrentTerminal": true,
-                "python.terminal.focusAfterLaunch": true,
-                "pythonIndent.keepHangingBracketOnLine": true,
-                "pythonIndent.trimLinesWithOnlyWhitespace": true
+                "[prettier]": {
+                    "prettierPath": "/usr/lib/node_modules/prettier"
+                },
+                "[python]": {
+                    "analysis.exclude": [
+                        "${containerWorkspaceFolder}/.dvc",
+                        "${containerWorkspaceFolder}/.pytest_cache",
+                        "${containerWorkspaceFolder}/.test_data",
+                        "${containerWorkspaceFolder}/.vscode",
+                        "${containerWorkspaceFolder}/.venv",
+                        "${containerWorkspaceFolder}/nf-scil-extensions",
+                        "**/__pycache__",
+                        "${containerWorkspaceFolder}/.git"
+                    ],
+                    "analysis.ignore": [
+                        "${containerWorkspaceFolder}/.dvc",
+                        "${containerWorkspaceFolder}/.pytest_cache",
+                        "${containerWorkspaceFolder}/.test_data",
+                        "${containerWorkspaceFolder}/.vscode",
+                        "${containerWorkspaceFolder}/.venv",
+                        "${containerWorkspaceFolder}/nf-scil-extensions",
+                        "**/__pycache__",
+                        "${containerWorkspaceFolder}/.git"
+                    ],
+                    "createEnvironment.trigger": "off",
+                    "interpreter.infoVisibility": "always",
+                    "poetryPath": "/root/.local/bin/poetry",
+                    "defaultInterpreterPath": "${containerWorkspaceFolder}/.venv",
+                    "terminal.activateEnvironment": true,
+                    "terminal.activateEnvInCurrentTerminal": true,
+                    "terminal.focusAfterLaunch": true
+                }
             },
             "extensions": [
                 "AlexVCaron.nf-scil-extensions",
