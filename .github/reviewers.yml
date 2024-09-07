@@ -66,5 +66,4 @@ options:
     - WIP
     - Work in progress
   enable_group_assignments: true
-  number_of_reviewers: 2
   last_files_match_only: false
