@@ -10,15 +10,18 @@ reviewers:
       - arnaudbore
     infrastructure-leads:
       - AlexVCaron
-    testing-leads:
-      - AlexVCaron
     documentation-leads:
-      - team:Reviewers_nf-scil
+      - AlexVCaron
+      - arnaudbore
+      - gagnonanthony
+      - ThoumyreStanislas
+      - Manonedde
     surgery-leads:
       - GuillaumeTh
     diffusion-mri-leads:
       - GuillaumeTh
       - AlexVCaron
+      - Manonedde
 
   per_author:
     anroy1:
@@ -47,7 +50,7 @@ files:
   'nf-scil-extensions/**':
     - infrastructure-leads
   'tests/**':
-    - testing-leads
+    - infrastructure-leads
   'docs/**':
     - documentation-leads
   'modules/nf-scil/**':
