@@ -32,12 +32,22 @@ reviewers:
   per_author:
     anroy1:
       - GuillaumeTh
-      - surgery-leads
-      - diffusion-mri-leads
+      - AlexVCaron
+    AlexVCaron:
+      - arnaudbore
+      - gagnonanthony
 
 files:
   '**':
     - infrastructure-leads
+    - repository-owners
+  'docs/**':
+    - documentation-leads
+  'LICENSE':
+    - repository-owners
+  'CONTRIBUTING.md':
+    - repository-owners
+    - documentation-leads
   '.devcontainer/**':
     - infrastructure-leads
   '.github/**':
@@ -57,22 +67,14 @@ files:
     - infrastructure-leads
   'tests/**':
     - infrastructure-leads
-  'docs/**':
-    - documentation-leads
   'modules/nf-scil/**':
     - guidelines-leads
   'subworkflows/nf-scil/**':
     - guidelines-leads
-  'LICENSE':
-    - repository-owners
-  'CONTRIBUTING.md':
-    - repository-owners
-    - documentation-leads
 
 options:
   ignore_draft: true
   ignored_keywords:
     - WIP
     - Work in progress
-  enable_group_assignment: true
-  last_files_match_only: false
+  number_of_reviewers: 2
