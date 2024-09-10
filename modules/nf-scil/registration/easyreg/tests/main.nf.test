@@ -17,7 +17,7 @@ nextflow_process {
                 script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
                 process {
                     """
-                    input[0] = Channel.from( [ "freesurfer.zip" ] )
+                    input[0] = Channel.from( [ "freesurfer.zip, registration.zip" ] )
                     input[1] = "test.load-test-data"
                     """
                 }
@@ -29,14 +29,25 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory
-                        .map{ test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        file("\${test_data_directory}/fa.nii.gz"),
-                        file("\${test_data_directory}/t1.nii.gz"),
-                        [],
-                        []
-                ]}
+                ch_split_test_data = LOAD_DATA.out.test_data_directory
+                    .branch{
+                        t1: it.simpleName == "freesurfer"
+                        b0: it.simpleName == "registration"
+                    }
+                ch_t1 = ch_split_test_data.t1.map{
+                    test_data_directory -> [
+                        [ id:'test' ],
+                        file("\${test_data_directory}/t1.nii.gz")
+                    ]
+                }
+                ch_b0 = ch_split_test_data.b0.map{
+                    test_data_directory -> [
+                        [ id:'test' ],
+                        file("\${test_data_directory}/b0.nii.gz")
+                    ]
+                }
+                input[0] = ch_t1
+                    .join(ch_b0)
                 """
             }
         }
