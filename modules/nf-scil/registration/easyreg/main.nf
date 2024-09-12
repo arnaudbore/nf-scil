@@ -47,8 +47,13 @@ process REGISTRATION_EASYREG {
         floating_segmentation="${prefix}_floating_segmentation.nii.gz"
     fi
 
-    mri_easyreg --ref $reference --flo $floating --ref_seg \${reference_segmentation} --flo_seg \${floating_segmentation} \
-        --flo_reg ${prefix}_floating_registered.nii.gz --ref_reg ${prefix}_reference_registered.nii.gz $field $threads $affine
+    mri_easyreg \
+        --ref $reference --flo $floating \
+        --ref_seg \${reference_segmentation} \
+        --flo_seg \${floating_segmentation} \
+        --flo_reg ${prefix}_floating_registered.nii.gz \
+        --ref_reg ${prefix}_reference_registered.nii.gz \
+        $field $threads $affine
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
