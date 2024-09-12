@@ -58,12 +58,12 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert snapshot(
-                    niftiMD5SUM(process.out.ref_seg.get(0).get(1), 4),
-                    niftiMD5SUM(process.out.flo_seg.get(0).get(1), 4),
-                    niftiMD5SUM(process.out.ref_reg.get(0).get(1), 4),
-                    niftiMD5SUM(process.out.flo_reg.get(0).get(1), 4),
-                    niftiMD5SUM(process.out.fwd_field.get(0).get(1), 4),
-                    niftiMD5SUM(process.out.bak_field.get(0).get(1), 4),
+                    file(process.out.ref_seg.get(0).get(1)).name,
+                    file(process.out.flo_seg.get(0).get(1)).name,
+                    niftiMD5SUM(process.out.ref_reg.get(0).get(1), 6),
+                    niftiMD5SUM(process.out.flo_reg.get(0).get(1), 6),
+                    niftiMD5SUM(process.out.fwd_field.get(0).get(1), 6),
+                    niftiMD5SUM(process.out.bak_field.get(0).get(1), 6),
                     process.out.versions
                 ).match() }
             )
