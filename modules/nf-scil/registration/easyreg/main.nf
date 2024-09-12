@@ -40,7 +40,7 @@ process REGISTRATION_EASYREG {
         reference_segmentation="${prefix}_reference_segmentation.nii.gz"
     fi
 
-        if [[ -f "$flo_segmentation" ]];
+    if [[ -f "$flo_segmentation" ]];
     then
         floating_segmentation=$flo_segmentation
     else
